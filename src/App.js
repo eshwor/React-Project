@@ -1,25 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Person from './Person/Person';
 
 class App extends Component {
+  state = {
+    persons : [
+      { name:"Ishowr", age:39 },
+      { name:"Eshwor", age:28 },
+      { name:"Sharmila", age:40 }
+    ]
+  }
+
+  clickMeFunction = (newName) => {
+    //this.state.persons[0].name = "ChangeingName"; DON"T DO THIS WAY
+    this.setState({
+      persons : [
+        // { name:"NewIshowr", age:35 }
+         { name: newName, age:35 }
+      ]
+    })
+  }
+
+  onChangeFunction = (event) => {
+    this.setState({
+      persons : [
+         { name: event.target.value , age:35 }
+      ]
+    })
+  }
+
   render() {
-    return (
+    return(
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <button onClick={ this.clickMeFunction }>TYE TO CLICK ME</button>
+        {/*<Person refclickfun={this.clickMeFunction} name={this.state.persons[0].name} age={this.state.persons[0].age}> </Person>*/}
+        <Person refonChangeFun={this.onChangeFunction} refclickfun={this.clickMeFunction.bind(this,'NEWISHWOR!!!')} name={this.state.persons[0].name} age={this.state.persons[0].age}> </Person>
+        <Person name="Eshwor" age="28"> I love to learn React </Person>
+        <Person name="Sharmila" age="40" />
       </div>
     );
   }
