@@ -1,3 +1,11 @@
 body {
   text-align: center;
 }
+
+button {
+  background: blue;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  color: white;
+  cursor: pointer;
+}
