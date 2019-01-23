@@ -7,13 +7,25 @@ import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 
 const burger = (props) => {
+
+  //Conver object to array
+  let transformIngredients = Object.keys(props.ingredients)
+  .map((igKey) => {
+    return [...Array(props.ingredients[igKey])].map((_, i) => {
+      return <BurgerIngredient key={igKey + i} type={igKey} />
+    });
+  }).reduce((arr, el) => {
+    return arr.concat(el)
+  }, []);
+
+  if(transformIngredients.length === 0){
+    transformIngredients = <p>Please start adding ingredients</p>
+  }
+
   return (
     <div className='Burger'>
       <BurgerIngredient type="bread-top"/>
-      <BurgerIngredient type="cheese"/>
-      <BurgerIngredient type="meat"/>
-      <BurgerIngredient type="bacon"/>
-      <BurgerIngredient type="salad"/>
+      {transformIngredients}
       <BurgerIngredient type="bread-bottom"/>
     </div>
 
