@@ -1,3 +1,10 @@
 body {
   text-align: center;
 }
+
+.header-nav {
+  background: #CCC;
+  width: 40rem;
+  padding: 0.5rem;
+  margin: 0 auto;
+}
