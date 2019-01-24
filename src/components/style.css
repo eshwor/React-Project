@@ -1,0 +1,24 @@
+/* All your style goes here */
+
+.wrapper {
+
+}
+
+button {
+  margin: 0 1rem;
+}
+
+form {
+  background: #DDD;
+  width: 300px;
+  padding: 0.5rem;
+  margin: 1rem auto;
+}
+
+input {
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+.btn  {
+  margin-left: 0.5rem;
+}
