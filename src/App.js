@@ -7,7 +7,6 @@ import Todos from './components/Todos';
 import TodoAdd from './components/TodoAdd';
 import './App.css';
 
-
 class App extends Component {
 
   HeaderNav = (props) => {
