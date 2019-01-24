@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import About from './components/pages/About';
+import Home from './components/pages/Home';
 import Todos from './components/Todos';
 import TodoAdd from './components/TodoAdd';
-
 import './App.css';
 
 
 class App extends Component {
+
+  HeaderNav = (props) => {
+    return (
+      <div className="header-nav">
+        <Link to="/home">Home</Link> | <Link to="/todo">Todo Page</Link> | <Link to="/about">About Us</Link>
+      </div>
+    );
+  }
 
   state = {
     todos: [
@@ -55,13 +65,23 @@ class App extends Component {
 
   render() {
     return(
-      <div className="App">
-      <TodoAdd addTodo={this.addTodo}/>
-      <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
+      <Router>
+        <div className="App">
+          <this.HeaderNav/>
 
+          <Route path="/Home" component={Home}/>
 
+          <Route exact path="/todo" render={props => (
+            <>
+              <TodoAdd addTodo={this.addTodo}/>
+              <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
+            </>
+          )}/>
 
-      </div>
+          <Route path="/About" component={About}/>
+
+        </div>
+      </Router>
     );
   }
 }
