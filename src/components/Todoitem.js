@@ -7,7 +7,7 @@ class Todoitem extends Component {
 
   getStyle = () => {
     return {
-      width: '300px',
+      width: '40rem',
       margin: '2rem auto',
       padding: '10px',
       borderBottom: '1px dotted #CCC',
@@ -20,7 +20,7 @@ class Todoitem extends Component {
     const {id, title} = this.props.todo;
     return(
       <div style={this.getStyle()} className="wrapper">
-        <input type="checkbox" onChange={this.props.markComplete.bind(this, id)}/> {" "}
+        <input style={{float:'left'}} type="checkbox" onChange={this.props.markComplete.bind(this, id)}/> {" "}
         {title}
         <button onClick={this.props.delTodo.bind(this,id)}>Delete</button>
       </div>
@@ -30,7 +30,10 @@ class Todoitem extends Component {
 
 
 Todoitem.propTypes = {
-  todo: propTypes.object.isRequired
+  todo: propTypes.object.isRequired,
+  markComplete: propTypes.func.isRequired,
+  delTodo: propTypes.func.isRequired,
+
 }
 
 

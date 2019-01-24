@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 import './style.css';
 
 class TodoAdd extends Component {
@@ -28,6 +29,10 @@ class TodoAdd extends Component {
       </form>
     );
   }
+}
+
+TodoAdd.propTypes = {
+  onChange: propTypes.func.isRequired
 }
 
 

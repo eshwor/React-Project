@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import axios from 'axios';
 import About from './components/pages/About';
 import Home from './components/pages/Home';
 import Todos from './components/Todos';
@@ -18,24 +19,14 @@ class App extends Component {
   }
 
   state = {
-    todos: [
-      {
-        id: 1,
-        title: "Take out the trash",
-        completed: false
-      },
-      {
-        id: 2,
-        title: "Dinner with wife",
-        completed: false
-      },
-      {
-        id: 3,
-        title: "Meeting with boss",
-        completed: false
-      }
-    ]
-  }
+    todos: []
+   }
+
+   //Get the data using HTTP fetch from this fake JSON data from the : https://jsonplaceholder.typicode.com/
+   componentDidMount(){
+     axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+     .then(response => this.setState({ todos: response.data}));
+   }
 
   //Toggle styles action
   markComplete = (id) => {
@@ -50,17 +41,16 @@ class App extends Component {
   //Delete selected list by filter
   //copy from state only those items which is not matched with passed id
   delTodo = (id) => {
-    this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]});
+    axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]}));
   }
 
   //adds new title
   addTodo = (title) => {
-    const newTodo = {
-      id: 4,
+    axios.post('https://jsonplaceholder.typicode.com/todos', {
       title: title,
       completed: false
-    }
-    this.setState({ todos: [...this.state.todos, newTodo]});
+    }).then( res => this.setState({ todos: [...this.state.todos, res.data]}));
   }
 
   render() {
@@ -68,7 +58,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <this.HeaderNav/>
-
+          <p>Welcome React Website</p>
           <Route path="/Home" component={Home}/>
 
           <Route exact path="/todo" render={props => (
