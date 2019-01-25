@@ -1,0 +1,38 @@
+import React, { Component } from 'react';
+import './App.css';
+// import AxiosInst from './AxiosInstance';
+import axios from 'axios';
+
+
+class App extends Component {
+
+  state = {
+    test: []
+  }
+
+  componentDidMount(){
+      axios.get('https://react-fcc18.firebaseio.com/test.json')
+      .then(result => this.setState({
+        test: result.data
+      }));
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
+  }
+
+
+
+  render() {
+
+    return(
+      <div className="App">
+
+
+      </div>
+    );
+  }
+}
+
+export default App;
