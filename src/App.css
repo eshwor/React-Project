@@ -1,3 +1,15 @@
 body {
   text-align: center;
+  background: #95E8F3;
+}
+
+/* LOGO  */
+.brand-logo {
+  left: 15%;
+}
+
+form {
+  padding: 1rem;
+  margin: 3rem auto;
+  border-radius: 0.5rem;
 }

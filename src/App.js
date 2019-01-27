@@ -5,6 +5,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import ProjectDetails from './Components/Projects/ProjectDetails';
 import SignIn from './Components/Auth/Signin';
 import SignUp from './Components/Auth/Signup';
+import CreateProject from './Components/Projects/ProjectCreate'
 import './App.css';
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route path="/project/:id" component={ProjectDetails} />
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp}/>
+            <Route path="/create" component={CreateProject}/>
           </Switch>
         </div>
       </Router>
